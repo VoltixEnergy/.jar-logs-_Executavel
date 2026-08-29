@@ -1,25 +1,23 @@
 package school.sptech;
 
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {
-        GeracaoDeLogs cpu = new GeracaoDeLogs();
+        Hardware cpu = new Hardware();
         cpu.nome = "CPU";
         cpu.metricaAtual = 10;
         cpu.metricaMaxima = 100;
         cpu.metricaRisco = 80;
         cpu.simboloUnidadeDeMedida = "%";
 
-        GeracaoDeLogs ram = new GeracaoDeLogs();
+        Hardware ram = new Hardware();
         ram.nome = "Memória RAM";
         ram.metricaAtual = 10;
         ram.metricaMaxima = 100;
         ram.metricaRisco = 80;
         ram.simboloUnidadeDeMedida = "%";
 
-        GeracaoDeLogs disco = new GeracaoDeLogs();
+        Hardware disco = new Hardware();
         disco.nome = "Disco";
         disco.metricaAtual = 10;
         disco.metricaMaxima = 100;

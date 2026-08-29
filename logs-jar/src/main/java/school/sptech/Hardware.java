@@ -3,7 +3,7 @@ package school.sptech;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class GeracaoDeLogs {
+public class Hardware {
 
     String nome;
     Integer metricaRisco;
@@ -36,7 +36,7 @@ public class GeracaoDeLogs {
     }
 
     String[] pegarInformacoes(){
-        String localizacao = GeracaoDeLogs.class.getName();
+        String localizacao = Hardware.class.getName();
         String nomeThread = Thread.currentThread().getName();
         String[] mensagem = new String[2];
         mensagem[0] = "%s".formatted(localizacao);
