@@ -12,7 +12,7 @@ public class Main {
 
         Hardware ram = new Hardware();
         ram.nome = "Memória RAM";
-        ram.metricaAtual = 10;
+        ram.metricaAtual = 80;
         ram.metricaMaxima = 100;
         ram.metricaRisco = 80;
         ram.simboloUnidadeDeMedida = "%";
@@ -107,7 +107,7 @@ public class Main {
 
                 } else if (verificarDisco[0] != null) {
                     String[] informacoesDisco = disco.pegarInformacoes();
-                    if (verificarCpu[1].equals("WARN")) {
+                    if (verificarDisco[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de Disco em estado crítico - " +
                                 "CPU: %d%s| RAM: %d%s| Disco: %d%s").formatted(verificarDisco[0], informacoesDisco[1], verificarDisco[1],
                                 informacoesDisco[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
@@ -121,7 +121,7 @@ public class Main {
 
                 } else if (verificarRam[0] != null) {
                     String[] informacoesRam = ram.pegarInformacoes();
-                    if (verificarCpu[1].equals("WARN")) {
+                    if (verificarRam[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de CPU em estado crítico - " +
                                 "CPU: %d%s| RAM: %d%s| Disco: %d%s").formatted(verificarRam[0], informacoesRam[1], verificarRam[1],
                                         informacoesRam[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
@@ -138,6 +138,7 @@ public class Main {
                     System.out.println(mensagem);
                 }
                 cpu.metricaAtual += 10;
+                disco.metricaAtual += 80;
                 Thread.sleep(10000);
             }
         } catch (InterruptedException e) {
