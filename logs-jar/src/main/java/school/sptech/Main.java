@@ -1,5 +1,7 @@
 package school.sptech;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -35,7 +37,7 @@ public class Main {
                 verificarRam = ram.verificar();
                 verificarDisco = disco.verificar();
 
-                if (verificarCpu[0] != null && verificarDisco[0] != null && verificarRam[0] != null) {
+                if (verificarCpu[1] != "INFO" && verificarDisco[1] != "INFO" && verificarRam[1] != "INFO") {
                     String[] informacoesCpu = cpu.pegarInformacoes();
                     if (verificarCpu[1].equals("WARN") || verificarDisco[1].equals("WARN") || verificarRam[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de hardware em estado crítico - " +
@@ -43,13 +45,13 @@ public class Main {
                                 informacoesCpu[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     } else {
-                        mensagem = ("%s [%s] %s %s -- [Leitura #%d] Alerta! Hardware instável - " +
+                        mensagem = ("%s [%s] %s %s -- [Leitura #%d] Alerta! Hardwares instáveis - " +
                                 "CPU: %d%s| RAM: %d%s| Disco: %d%s").formatted(verificarCpu[0], informacoesCpu[1], verificarCpu[1],
                                 informacoesCpu[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
 
-                } else if (verificarCpu[0] != null && verificarDisco[0] != null) {
+                } else if (verificarCpu[1] != "INFO" && verificarDisco[1] != "INFO") {
                     String[] informacoesCpu = cpu.pegarInformacoes();
                     if (verificarCpu[1].equals("WARN") || verificarDisco[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de CPU e Disco em estado crítico - " +
@@ -63,7 +65,7 @@ public class Main {
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
 
-                } else if (verificarCpu[0] != null && verificarRam[0] != null) {
+                } else if (verificarCpu[1] != "INFO" && verificarRam[1] != "INFO") {
                     String[] informacoesCpu = cpu.pegarInformacoes();
                     if (verificarCpu[1].equals("WARN") || verificarRam[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de CPU e memória RAM em estado crítico - " +
@@ -77,7 +79,7 @@ public class Main {
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
 
-                } else if (verificarRam[0] != null && verificarDisco[0] != null) {
+                } else if (verificarRam[1] != "INFO" && verificarDisco[1] != "INFO") {
                     String[] informacoesCpu = cpu.pegarInformacoes();
                     if (verificarDisco[1].equals("WARN") || verificarRam[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de memória RAM e Disco em estado crítico - " +
@@ -91,7 +93,7 @@ public class Main {
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
 
-                } else if (verificarCpu[0] != null) {
+                } else if (verificarCpu[1] != "INFO") {
                     String[] informacoesCpu = cpu.pegarInformacoes();
                     if (verificarCpu[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de CPU em estado crítico - " +
@@ -105,7 +107,7 @@ public class Main {
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
 
-                } else if (verificarDisco[0] != null) {
+                } else if (verificarDisco[1] != "INFO") {
                     String[] informacoesDisco = disco.pegarInformacoes();
                     if (verificarDisco[1].equals("WARN")) {
                         mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de Disco em estado crítico - " +
@@ -119,26 +121,32 @@ public class Main {
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
 
-                } else if (verificarRam[0] != null) {
+                } else if (verificarRam[1] != "INFO") {
                     String[] informacoesRam = ram.pegarInformacoes();
                     if (verificarRam[1].equals("WARN")) {
-                        mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de CPU em estado crítico - " +
+                        mensagem = ("%s [%s] %s %s -- [Leitura #%d] Atenção! Alerta de memória RAM em estado crítico - " +
                                 "CPU: %d%s| RAM: %d%s| Disco: %d%s").formatted(verificarRam[0], informacoesRam[1], verificarRam[1],
                                         informacoesRam[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     } else {
-                        mensagem = ("%s [%s] %s %s -- [Leitura #%d] Alerta! CPU instável - " +
+                        mensagem = ("%s [%s] %s %s -- [Leitura #%d] Alerta! Memória RAM instável - " +
                                 "CPU: %d%s| RAM: %d%s| Disco: %d%s").formatted(verificarRam[0], informacoesRam[1], verificarRam[1],
                                         informacoesRam[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
                                 ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                     }
+                } else {
+                    String[] informacoesRam = ram.pegarInformacoes();
+                    mensagem = ("%s [%s] %s %s -- [Leitura #%d] Relatório! Hardwares estáveis - " +
+                            "CPU: %d%s| RAM: %d%s| Disco: %d%s").formatted(verificarRam[0], informacoesRam[1], verificarRam[1],
+                            informacoesRam[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
+                            ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida);
                 }
 
                 if (mensagem != null) {
                     System.out.println(mensagem);
                 }
                 cpu.metricaAtual += 10;
-                disco.metricaAtual += 80;
+                disco.metricaAtual += 10;
                 Thread.sleep(10000);
             }
         } catch (InterruptedException e) {

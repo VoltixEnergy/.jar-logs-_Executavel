@@ -19,18 +19,18 @@ public class Hardware {
         LocalDateTime dataHora = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyy HH:mm:ss");
         String dataHoraFormatada = dataHora.format(formatter);
-        String tipoAviso = "";
         String[] mensagem = new String[2];
 
         if (metricaAtual.equals(metricaMaxima)) {
-            tipoAviso = "WARN";
             mensagem[0] = "%s".formatted(dataHoraFormatada);
-            mensagem[1] = "%s".formatted(tipoAviso);
+            mensagem[1] = "WARN";
 
         } else if (metricaAtual >= metricaRisco) {
-            tipoAviso = "ERROR";
             mensagem[0] = "%s".formatted(dataHoraFormatada);
-            mensagem[1] = "%s".formatted(tipoAviso);
+            mensagem[1] = "ERROR";
+        } else {
+            mensagem[0] = "%s".formatted(dataHoraFormatada);
+            mensagem[1] = "INFO";
         }
         return mensagem;
     }
