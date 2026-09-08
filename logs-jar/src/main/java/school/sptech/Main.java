@@ -143,7 +143,7 @@ public class Main {
                             informacoesRam[0], i, cpu.metricaAtual, cpu.simboloUnidadeDeMedida, ram.metricaAtual,
                             ram.simboloUnidadeDeMedida, disco.metricaAtual, disco.simboloUnidadeDeMedida, verificarRam[0]);
                 }
-
+            
                 if (mensagem != null) {
                     System.out.println(mensagem);
                 }
@@ -151,6 +151,7 @@ public class Main {
                 disco.metricaAtual += 10;
                 Thread.sleep(10000);
             }
+            // Tratamento de erros
         } catch (InterruptedException e) {
             System.out.println("Erro no esperar 10 segundos.");
         } catch (NullPointerException e) {
