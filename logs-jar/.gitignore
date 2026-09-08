@@ -1,3 +1,4 @@
+### Itens a serem ignorados pelo Git ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
